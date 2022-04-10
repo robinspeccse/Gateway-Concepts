@@ -44,8 +44,7 @@ public class UserController {
 
     @GetMapping("/getUserInfo/{userId}")
     public ResponseEntity<Flux<Package>> getPackage(@PathVariable("userId") String userId) {
-
-        Flux<Package> packageFlux = this.webClient.get().uri(url).retrieve().bodyToFlux(Package.class);
+        Flux<Package> packageFlux = this.webClient.get().uri(url+"/"+userId).retrieve().bodyToFlux(Package.class);
         return ResponseEntity.ok().body(packageFlux);
     }
 
